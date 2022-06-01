@@ -6,15 +6,11 @@
 
 本项目主要基于Vue-Element-Admin，详见：https://github.com/PanJiaChen/vue-element-admin/blob/master/README.zh-CN.md
 
-![image-20220601182954456](D:\University\项目\员工管理系统\pic\1.png)
-
-![image-20220601183020149](D:\University\项目\员工管理系统\pic\2.png)
-
-![image-20220601183107571](D:\University\项目\员工管理系统\pic\3.png)
-
-![image-20220601183145369](D:\University\项目\员工管理系统\pic\4.png)
-
-![image-20220601190503481](D:\University\项目\员工管理系统\pic\5.png)
+![image-20220601182954456](https://github.com/Aomr1/employ_manage/blob/main/pic/1.png)
+![image-20220601182954456](https://github.com/Aomr1/employ_manage/blob/main/pic/2.png)
+![image-20220601182954456](https://github.com/Aomr1/employ_manage/blob/main/pic/3.png)
+![image-20220601182954456](https://github.com/Aomr1/employ_manage/blob/main/pic/4.png)
+![image-20220601182954456](https://github.com/Aomr1/employ_manage/blob/main/pic/5.png)
 
 ### 如何启动项目
 
@@ -28,17 +24,16 @@ https://github.com/PanJiaChen/vue-element-admin/blob/master/README.zh-CN.md
 
 1.首先需要构建数据库名称，项目中使用的是employ_manage，在config.py中需要配置你的mysql信息以及邮箱信息
 
-![image-20220601184130090](D:\University\项目\员工管理系统\pic\6.png)
+![image-20220601182954456](https://github.com/Aomr1/employ_manage/blob/main/pic/6.png)
 
 2.在蓝图中的employ.py、punch.py中配置你的mysql信息
 
-![image-20220601185129653](D:\University\项目\员工管理系统\pic\7.png)
+![image-20220601182954456](https://github.com/Aomr1/employ_manage/blob/main/pic/7.png)
 
-![image-20220601185049932](D:\University\项目\员工管理系统\pic\8.png)
+![image-20220601182954456](https://github.com/Aomr1/employ_manage/blob/main/pic/8.png)
 
 3.在蓝图中的user.py中配置你的邮箱信息
-
-![image-20220601185300880](D:\University\项目\员工管理系统\pic\9.png)
+![image-20220601182954456](https://github.com/Aomr1/employ_manage/blob/main/pic/9.png)
 
 然后在python环境中输入：
 
