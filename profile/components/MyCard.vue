@@ -1,0 +1,128 @@
+<template>
+  <div>
+    <el-row :gutter="20">
+      <el-col :span="4">
+        <div style="margin-top:150px;text-align: center;">
+
+          <el-upload
+            action="http://127.0.0.1:5000/User/ChangeAvatar"
+            class="upload-demo"
+            :show-file-list="false"
+            :data="{'token': token}"
+            :on-success="handleAvatarSuccess"
+          >
+            <el-image style="width: 100px; height: 100px; border-radius:50px" :src="avatar" />
+          </el-upload>
+
+          <h3 style="font-size:large">{{ name }}</h3>
+        </div>
+      </el-col>
+      <el-col :span="20">
+        <el-descriptions direction="vertical" :column="3" border>
+
+          <el-descriptions-item label="姓名">{{ name }}</el-descriptions-item>
+
+          <el-descriptions-item label="所在部门">{{ department }}</el-descriptions-item>
+
+          <el-descriptions-item label="邮箱">{{ mail }}</el-descriptions-item>
+
+          <el-descriptions-item label="身份">
+            <el-tag :type="roles | identityFilter">{{ roles[0] }}</el-tag>
+          </el-descriptions-item>
+
+          <el-descriptions-item label="学历">{{ education }}</el-descriptions-item>
+
+          <el-descriptions-item label="员工星级">
+            <svg-icon v-for="n in imp" :key="n" icon-class="star" class="meta-item__icon" />
+          </el-descriptions-item>
+
+          <el-descriptions-item label="状态">
+            <el-tag :type="zt_state | statusFilter">{{ zt_state }}</el-tag>
+          </el-descriptions-item>
+
+          <el-descriptions-item label="是否已婚">{{ marriage }}</el-descriptions-item>
+
+          <el-descriptions-item label="出生日期">{{ employee.birthday }}</el-descriptions-item>
+
+          <el-descriptions-item label="毕业学校">{{ school }}</el-descriptions-item>
+
+          <el-descriptions-item label="家乡">{{ home }}</el-descriptions-item>
+
+          <el-descriptions-item label="入职时间">{{ employee.entrytime }}</el-descriptions-item>
+
+          <el-descriptions-item label="备注">{{ remark }}</el-descriptions-item>
+        </el-descriptions>
+      </el-col>
+    </el-row>
+  </div>
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+export default {
+  filters: {
+    identityFilter(identity) {
+      const identityMap = {
+        员工: 'primary',
+        组长: 'success',
+        高管: 'warning',
+        老板: 'danger'
+      }
+      return identityMap[identity]
+    },
+    statusFilter(status) {
+      const statusMap = {
+        执勤: 'success',
+        休假: 'info'
+      }
+      return statusMap[status]
+    }
+  },
+  data() {
+    return {
+      employee: {},
+      fileList: []
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'name',
+      'avatar',
+      'roles',
+      'token',
+      'department',
+      'education',
+      'mail',
+      'imp',
+      'zt_state',
+      'marriage',
+      'birthday',
+      'school',
+      'home',
+      'entrytime',
+      'remark',
+      'creatime'
+    ])
+  },
+  mounted() {
+    console.log(this.$store.state.user.avatar)
+    this.getEmployee()
+  },
+  methods: {
+    getEmployee() {
+      this.$axios
+        .post('http://127.0.0.1:5000/Employ/GetTwoTime', {
+          token: this.token
+        })
+        .then((response) => {
+          if (response.data.code === 20000) {
+            this.employee = response.data.items[0]
+          }
+        })
+    },
+    handleAvatarSuccess(response, file) {
+      this.$store.state.user.avatar = URL.createObjectURL(file.raw)
+    }
+  }
+}
+</script>
