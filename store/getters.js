@@ -1,0 +1,25 @@
+const getters = {
+  sidebar: state => state.app.sidebar,
+  device: state => state.app.device,
+  token: state => state.user.token,
+  avatar: state => state.user.avatar,
+  name: state => state.user.name,
+  roles: state => state.user.roles,
+  department: state => state.user.department,
+  sex: state => state.user.sex,
+  education: state => state.user.education,
+  mail: state => state.user.mail,
+  imp: state => state.user.imp,
+  zt_state: state => state.user.zt_state,
+  entrytime: state => state.user.entrytime,
+  birthday: state => state.user.birthday,
+  school: state => state.user.school,
+  home: state => state.user.home,
+  marriage: state => state.user.marriage,
+  remark: state => state.user.remark,
+  creatime: state => state.user.creatime,
+  permission_routes: state => state.permission.routes,
+  second_routes: state => state.permission.second_routes,
+  third_routes: state => state.permission.third_routes
+}
+export default getters
